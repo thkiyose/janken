@@ -7,12 +7,12 @@ class Player
     puts "0:グー, 1:チョキ, 2:パー"
     # 変数「input_hand」にプレイヤーが入力したものを取得して代入します。
       # ヒント! 「getsメソッド」を使用します。
-    input_hand = gets.chomp.to_i
+    input_hand = gets.chomp
     # 「input_hand」(取得した値)が「0, 1, 2」のいずれかだとwhileから脱出させ、それ以外だと初めから繰り返させます。
       # ヒント! 「while」と「if」を使用します。
       # 以降の型の例に沿って実装しましょう ※実装する時場合はコメントアウトに注意しましょう
       while true
-        if input_hand.between?(0,2)
+        if input_hand =~ /[0-2]/
           # 「input_hand」(取得した値)をそのまま返します。
             # ヒント！ 「return」を使用します。
             return input_hand
@@ -21,7 +21,7 @@ class Player
           puts "もう一度数字を入力してください。"
           puts "0:グー, 1:チョキ, 2:パー"
           # 変数「input_hand」にプレイヤーが入力したものを取得して代入します。
-          input_hand = gets.chomp.to_i
+          input_hand = gets.chomp
         end
       end
   end
@@ -41,7 +41,7 @@ class Janken
     # Playerクラスの戻り値とEnemyクラスの戻り値からじゃんけんするロジックを作成します。
       # 以降の型の例に沿って実装しましょう ※実装する時場合はコメントアウトに注意しましょう
       # じゃんけんの勝ち負け判定に使う式
-      calc = (player_hand - enemy_hand + 3) % 3
+      calc = (player_hand.to_i - enemy_hand + 3) % 3
       if calc == 0
         # 「あいこ」を出力します。
         puts "あいこ"
